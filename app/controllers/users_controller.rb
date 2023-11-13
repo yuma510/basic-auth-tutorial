@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    #paramsは送られてきた値を受け取る
+
     def create
         #user_idとpassword、他のデフォルトの変数をもったuserクラスをつくる。
         user = User.new(user_id: params["user_id"], password: params["password"])
@@ -9,4 +11,10 @@ class UsersController < ApplicationController
             render json: {message: "Failed...", errors: errors}#ユーザ作成に失敗した場合は、エラーメッセージを返す
         end
     end
+
+    def show
+        user = User.find(params["id"])#Userモデルのid番目を取得
+        render json: {user: user}
+    end
+
 end
