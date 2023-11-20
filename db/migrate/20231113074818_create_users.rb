@@ -7,5 +7,6 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     end#rails db:migrateをする
 
     add_index :users, :user_id, unique: true #同一のuser_idがデータベースに保存されないようにしている
+  
   end
 end
