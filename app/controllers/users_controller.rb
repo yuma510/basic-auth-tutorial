@@ -4,7 +4,13 @@ class UsersController < ApplicationController
     #paramsは送られてきた値を受け取る
 
 
-    before_action :basic_auth, only:[:show, :update]#showアクション実行前のみbasic_authを行う
+    before_action :basic_auth, only:[:show, :update, :destroy]#showアクション実行前のみbasic_authを行う
+
+    def destroy
+        @current_user.destroy
+        users = User.all
+        render json: {users: users}#ちゃんとユーザが削除されたか確認するため、ユーザ一覧を返している
+    end
 
     def update
         @current_user.update(nickname: params["nickname"], comment: params["comment"])
