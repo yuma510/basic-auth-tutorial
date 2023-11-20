@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post "signup", to: "users#create"
   get "users/:id", to: "users#show"
   get "users", to: "users#index"
+  patch "users/:id", to: "users#update"
   # Defines the root path route ("/")
   # root "articles#index"
 end

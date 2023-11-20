@@ -4,7 +4,12 @@ class UsersController < ApplicationController
     #paramsは送られてきた値を受け取る
 
 
-    before_action :basic_auth, only:[:show]#showアクション実行前のみbasic_authを行う
+    before_action :basic_auth, only:[:show, :update]#showアクション実行前のみbasic_authを行う
+
+    def update
+        @current_user.update(nickname: params["nickname"], comment: params["comment"])
+        render json: {user: @current_user}
+    end
 
     def index
         users = User.all
