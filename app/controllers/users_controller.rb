@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 
     before_action :basic_auth, only:[:show]#showアクション実行前のみbasic_authを行う
 
+    def index
+        users = User.all
+        render json: {users: users}
+    end
 
     def show
         # user = User.find(params["id"])#Userモデルのid番目を取得

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "ping", to: "pings#index"
   post "signup", to: "users#create"
   get "users/:id", to: "users#show"
+  get "users", to: "users#index"
   # Defines the root path route ("/")
   # root "articles#index"
 end
