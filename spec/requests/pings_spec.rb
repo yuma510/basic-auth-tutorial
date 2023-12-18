@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Pings", type: :request do
   describe "GET /pong" do
-    it "レスポンスの値は意図したものか" do #メモ
+    it "レスポンスの値は意図したものか" do 
       expected_body = {
         "message" => "ping"
       }

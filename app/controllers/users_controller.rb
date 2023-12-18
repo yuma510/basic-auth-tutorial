@@ -29,8 +29,9 @@ class UsersController < ApplicationController
         # Basic認証ではブラウザに認証情報を保存する。
         # 認証が必要な処理の場合は、リクエスト時に認証情報をサーバに送り、都度その認証情報が正しいか検証する。
         # 下記では便宜上、認証情報をレスポンスに含んでいるが、本来は認証情報を送り返すなんてことはしないはず。てかやっちゃダメ。
-        auth = request.headers["Authorization"]
-        render json: {user: @current_user, auth: auth}
+        #  auth = request.headers["Authorization"]
+        #  render json: {user: @current_user, auth: auth}
+        render json: @current_user.as_json(only: [:user_id, :password])
     end
 
 
