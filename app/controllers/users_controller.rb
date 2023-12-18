@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 
     def update
         @current_user.update(nickname: params["nickname"], comment: params["comment"])
-        render json: {user: @current_user}
+        # render json: {user: @current_user}
+        render json: @current_user.as_json(only: [:nickname, :comment])
     end
 
     def index
